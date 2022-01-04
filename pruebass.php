@@ -17,7 +17,7 @@
 
 <?php
 
-$curl = curl_init(); //inicia la sesión cURL
+$curl = curl_init(); 
 
 $url_api="api.stagingeb.com/v1/";
 $module="properties";
