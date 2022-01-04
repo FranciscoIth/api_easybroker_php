@@ -29,26 +29,24 @@ $url=$url_api.$module;
 $peticion="GET";
 
 		curl_setopt_array($curl, array(
-			CURLOPT_URL => $url, //url a la que se conecta
-			CURLOPT_RETURNTRANSFER => true, //devuelve el resultado como una cadena del tipo curl_exec
-			CURLOPT_FOLLOWLOCATION => true, //sigue el encabezado que le envíe el servidor
-			CURLOPT_ENCODING => "", // permite decodificar la respuesta y puede ser"identity", "deflate", y "gzip", si está vacío recibe todos los disponibles.
-			CURLOPT_MAXREDIRS => 10, // Si usamos CURLOPT_FOLLOWLOCATION le dice el máximo de encabezados a seguir
-			CURLOPT_TIMEOUT => 30, // Tiempo máximo para ejecutar
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1, // usa la versión declarada
-			CURLOPT_CUSTOMREQUEST => $peticion, // el tipo de petición, puede ser PUT, POST, GET o Delete dependiendo del servicio
-			CURLOPT_HTTPHEADER => $headers, //configura las cabeceras enviadas al servicio
-		)); //curl_setopt_array configura las opciones para una transferencia cURL
+			CURLOPT_URL => $url, 
+			CURLOPT_RETURNTRANSFER => true, 
+			CURLOPT_FOLLOWLOCATION => true, 
+			CURLOPT_ENCODING => "", 
+			CURLOPT_MAXREDIRS => 10, 
+			CURLOPT_TIMEOUT => 30, 
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1, 
+			CURLOPT_CUSTOMREQUEST => $peticion, 
+			CURLOPT_HTTPHEADER => $headers, 
+		)); 
 
-$response = curl_exec($curl);// respuesta generada
+$response = curl_exec($curl);
 
-
-$err = curl_error($curl); // muestra errores en caso de existir
-
-curl_close($curl); // termina la sesión 
+$err = curl_error($curl); 
+curl_close($curl); 
 
 if ($err) {
-	echo "cURL Error #:" . $err; // mostramos el error
+	echo "cURL Error #:" . $err; 
 } else {
 	
 	$cadena=json_decode($response);
@@ -57,7 +55,7 @@ if ($err) {
   			<div class='row'>";
 
 	foreach ($cadena->content as $valor) {
-		// code...
+		
 
 		echo "<div class='col-sm-6'>";
 		echo "<ul><li>";
